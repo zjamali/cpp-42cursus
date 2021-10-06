@@ -10,7 +10,6 @@ all: $(NAME)
 $(NAME):
 	$(CC) $(CFLAGS) $(SRC_NAME) -o $@
 
-
 fclean:
 	rm -rf $(NAME)
 re: fclean all
