@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/06 17:11:49 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/06 18:51:01 by zjamali          ###   ########.fr       */
+/*   Created: 2021/10/06 18:27:30 by zjamali           #+#    #+#             */
+/*   Updated: 2021/10/06 18:52:19 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Phonebook.hpp"
 
-Phonebook::Phonebook()
-{
-   Phonebook::_contactCount = 0;
-}
-
-Phonebook::~Phonebook()
-{
-}
-
-int Phonebook::getNumberContact(void) const
-{
-    return this->_contactCount;
-}
-
-void Phonebook::addContact(void)
+int main()
 {
     
-}
-
-void Phonebook::serchContact(void)
-{
     
 }

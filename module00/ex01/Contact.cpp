@@ -6,20 +6,54 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 17:59:31 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/06 18:11:11 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/10/06 18:45:52 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Contact.hpp"
 
-Contact::Contact(char firstName[20], char lastName[20], char nickName[20],
-        long PhoneNumber, char secret[50])
-{
-    
+Contact::Contact()
+{   
 }
 
 Contact::~Contact()
 {
-    
+}
+
+std::string     Contact::getFirstName(void) const {
+        return (this->_firstName);
+}
+std::string     Contact::getLastName(void) const {
+        return (this->_lastName);
+}
+std::string     Contact::getNickName(void) const {
+        return (this->_nickname);
+}
+std::string     Contact::getPhoneNumber(void) const {
+        return (this->_phoneNumber);
+}
+std::string     Contact::getDarkSecret(void) const {
+        return (this->_darkSecret);
+}
+
+void            Contact::setFirstName(std::string firstName)
+{
+        this->_firstName = firstName;
+}
+void            Contact::setLastName(std::string lastName)
+{
+        this->_lastName = lastName;
+}
+void            Contact::setNickName(std::string nickName)
+{
+        this->_nickname = nickName;
+}
+void            Contact::setPhoneNumber(std::string phoneNumber)
+{
+        this->_phoneNumber = phoneNumber;
+}
+void            Contact::setDarkSecret(std::string secret)
+{
+        this->_darkSecret = secret;
 }
