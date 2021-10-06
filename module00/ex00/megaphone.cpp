@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:45:16 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/06 15:56:31 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/10/06 16:58:54 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int main(int argc, char **argv)
 {
     std::string str;
+
     if (argc > 1)
     {
         for (int i = 1; i < argc; i++)
@@ -28,7 +29,5 @@ int main(int argc, char **argv)
         std::cout << std::endl;
     }
     else
-    {
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-    }
 }
