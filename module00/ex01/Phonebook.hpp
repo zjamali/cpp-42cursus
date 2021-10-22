@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 17:09:25 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/06 18:52:52 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/10/22 15:59:25 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Phonebook
 {
 private:
 	int         _contactCount;
-	Contact		contact[8];
+	Contact		_contact[8];
 
 public:
 	Phonebook();
