@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 18:27:30 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/22 18:37:11 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/10/25 18:37:29 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int main()
         std::cin>>command;
         if (command == "ADD")
         {
-
+            phone.addContact();
         }
         else if (command == "SEARCH")
         {
-            std::cout<< std::setw(40)<< "------------------------------------------"<<std::endl;
+            phone.serchContact();
         }
         else if (command == "EXIT")
         {
