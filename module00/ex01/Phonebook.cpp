@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 17:11:49 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/25 19:18:13 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/10/26 15:51:01 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,37 +24,36 @@ Phonebook::~Phonebook()
 {
 }
 
-int Phonebook::getNumberContact(void) const
-{
-    return this->_contactCount;
-}
-
 void Phonebook::addContact(void)
 {
     std::string input;
-    std::cout<< std::setw(45)<< "----------------ADD CONTACT----------"<<std::endl;
-    std::cout<< "enter the first name:" << std::endl;
-    std::cin>>input;
+
+    std::cout<< "----------------ADD CONTACT----------"<<std::endl;
+    std::cout<< "enter the first name:" ;
+    std::getline(std::cin, input);
     _contact[index].setFirstName(input);
-    std::cout<< "enter the last name:" << std::endl;
-    std::cin>>input;
+    std::cout<< "enter the last name:" ;
+    std::getline(std::cin, input);
     _contact[index].setLastName(input);
-    std::cout<< "enter the nickname:" << std::endl;
-    std::cin>>input;
+    std::cout<< "enter the nickname:" ;
+    std::getline(std::cin, input);
     _contact[index].setNickName(input);
-    std::cout<< "enter the phone number:" << std::endl;
-    std::cin>>input;
+    std::cout<< "enter the phone number:" ;
+    std::getline(std::cin, input);
     _contact[index].setPhoneNumber(input);
-    std::cout<< "enter the dark secret :" << std::endl;
-    std::cin>>input;
+    std::cout<< "enter the dark secret :" ;
+    std::getline(std::cin, input);
     _contact[index].setDarkSecret(input);
     std::cout<< "-----Contact added ----" << std::endl;
-    _contactCount++;
-    index++;
+    index = ((index + 1) % 8);
+    if (_contactCount < 8)
+        _contactCount++;
 }
 void Phonebook::serchContact(void)
 {
     int i = 0;
+    std::string input;
+    int index;
 
     if (_contactCount == 0)
     {
@@ -62,12 +61,36 @@ void Phonebook::serchContact(void)
     }
     else
     {
-        std::cout<< std::setw(45)<< "--------------SEARCH CONTACT--------------"<<std::endl;
+        std::cout<<"--------------SEARCH CONTACT-----------------"<<std::endl;
         std::cout<<"|" << std::setw(10)<< "index" <<"|" << std::setw(10)<< "first Name" <<"|" << std::setw(10)<< "last name" <<"|" << std::setw(10)<< "nick Name"<< "|" << std::endl;
         while (i < Phonebook::_contactCount)
         {
             Phonebook::printContact(i);
             i++;
+        }
+        std::cout<<"enter contact index or type retun to return to main > ";
+        std::getline(std::cin, input);
+        if (input == "return")
+            return;
+        index = std::atoi(input.c_str());
+        while (index > Phonebook::_contactCount || index == 0)
+        {
+            std::cout << "contact not exist to retun to main menu enter return > " << std::endl;
+            std::cout<<"enter contact index : ";
+            std::getline(std::cin, input);
+            if (input == "return")
+                return;
+            index = std::atoi(input.c_str());
+        }
+        if (index <= Phonebook::_contactCount)
+        {
+            std::cout<<"--------------CONTACT DEATAILS-----------------"<<std::endl;
+            std::cout << "|" << std::setw(13) << "index" << "| " << index << std::endl;
+            std::cout << "|" << std::setw(13) << "first name" << "| " << Phonebook::_contact[index - 1].getFirstName() << std::endl;
+            std::cout << "|" << std::setw(13) << "last name" << "| " << Phonebook::_contact[index - 1].getLastName() << std::endl;
+            std::cout << "|" << std::setw(13) << "nick name" << "| " << Phonebook::_contact[index - 1].getNickName() << std::endl;
+            std::cout << "|" << std::setw(13) << "phone number" << "| " << Phonebook::_contact[index - 1].getPhoneNumber() << std::endl;
+            std::cout << "|" << std::setw(13) << "dark secret" << "| " << Phonebook::_contact[index - 1].getDarkSecret() << std::endl;
         }
     }
 }

@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 18:27:30 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/25 18:37:29 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/10/26 15:46:06 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@ int main()
     Phonebook phone;
     std::string command;
     
-    while(1)
+    std::cout<< "-------------------------------------------"<<std::endl;
+    std::cout<< "|      welcome to PhoneBook               |"<<std::endl;
+    std::cout<< "| -> to add a contact type ADD            |"<<std::endl;
+    std::cout<< "| -> to search for a contact type SEARCH  |"<<std::endl;
+    std::cout<< "| -> to exit for a contact type EXIT      |"<<std::endl;
+    std::cout<< "-------------------------------------------"<<std::endl;
+    std::cout<< "> ";
+    while(std::getline(std::cin, command))
     {
-        std::cout<< std::setw(45)<< "-------------------------------------------"<<std::endl;
-        std::cout<< std::setw(45)<< "|      welcome to PhoneBook               |"<<std::endl;
-        std::cout<< std::setw(45)<< "|   -to add a contact type ADD            |"<<std::endl;
-        std::cout<< std::setw(45)<< "|   -to search for a contact type SEARCH  |"<<std::endl;
-        std::cout<< std::setw(45)<< "|   -to exit for a contact type EXIT      |"<<std::endl;
-        std::cout<< std::setw(45)<< "------------------------------------------"<<std::endl;
-        std::cout<< std::setw(5)<< "> ";
-        std::cin>>command;
         if (command == "ADD")
         {
             phone.addContact();
@@ -45,5 +44,12 @@ int main()
         {
             std::cout<< "Please, type ADD,SEARCH or EXIT" <<std::endl;
         }
+        std::cout<< std::endl;
+        std::cout<< "-------------------------------------------"<<std::endl;
+        std::cout<< "| -> to add a contact type ADD            |"<<std::endl;
+        std::cout<< "| -> to search for a contact type SEARCH  |"<<std::endl;
+        std::cout<< "| -> to exit for a contact type EXIT      |"<<std::endl;
+        std::cout<< "-------------------------------------------"<<std::endl;
+        std::cout<< "> ";
     }   
 }
