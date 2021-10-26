@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/06 17:11:49 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/26 15:51:01 by zjamali          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
@@ -17,7 +6,7 @@
 Phonebook::Phonebook()
 {
    Phonebook::_contactCount = 0;
-   Phonebook::index = 0;
+   Phonebook::_index = 0;
 }
 
 Phonebook::~Phonebook()
@@ -31,21 +20,21 @@ void Phonebook::addContact(void)
     std::cout<< "----------------ADD CONTACT----------"<<std::endl;
     std::cout<< "enter the first name:" ;
     std::getline(std::cin, input);
-    _contact[index].setFirstName(input);
+    _contact[_index].setFirstName(input);
     std::cout<< "enter the last name:" ;
     std::getline(std::cin, input);
-    _contact[index].setLastName(input);
+    _contact[_index].setLastName(input);
     std::cout<< "enter the nickname:" ;
     std::getline(std::cin, input);
-    _contact[index].setNickName(input);
+    _contact[_index].setNickName(input);
     std::cout<< "enter the phone number:" ;
     std::getline(std::cin, input);
-    _contact[index].setPhoneNumber(input);
+    _contact[_index].setPhoneNumber(input);
     std::cout<< "enter the dark secret :" ;
     std::getline(std::cin, input);
-    _contact[index].setDarkSecret(input);
+    _contact[_index].setDarkSecret(input);
     std::cout<< "-----Contact added ----" << std::endl;
-    index = ((index + 1) % 8);
+    _index = ((_index + 1) % 8);
     if (_contactCount < 8)
         _contactCount++;
 }

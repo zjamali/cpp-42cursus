@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/06 17:09:25 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/26 15:41:25 by zjamali          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
@@ -17,7 +6,7 @@
 class Phonebook
 {
 private:
-	int         index;
+	int         _index;
 	int			_contactCount;
 	Contact		_contact[8];
 
