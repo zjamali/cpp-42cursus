@@ -29,6 +29,11 @@ int main(int ac, char **av)
     std::fstream    inputFile;
     std::fstream    outputFile;
     std::string     line;
+    int             found = 0;
+    std::string     strToFind = av[2];
+    std::string     splittedLine;
+
+    std::cout << strToFind << std::endl;
     if (check_arguments(ac,av))
         return (1);
     inputFile.open(av[1], std::ios::in);
@@ -39,9 +44,17 @@ int main(int ac, char **av)
 	}
     while (std::getline(inputFile, line))
     {
-        line.find();
+        found = 0;
         line.append("\n");
         std::cout << line ;
+        while (true)
+        {
+            found = line.find(strToFind, found);
+            if (found == -1)
+                break;
+            std::cout << "found : " <<found << std::endl;
+            found = found + 1;
+        }
         if (inputFile.eof())
             break;
     }
