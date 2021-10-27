@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 18:27:30 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/27 17:51:33 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/10/27 20:20:41 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ int main()
         std::cout<< "| -> to exit for a contact type EXIT      |"<<std::endl;
         std::cout<< "-------------------------------------------"<<std::endl;
         std::cout<< "> ";
-    }   
+    } 
+    return (0); 
 }
