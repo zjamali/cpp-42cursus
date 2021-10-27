@@ -1,3 +1,5 @@
+#ifndef ZOMBIE_HPP
+#define ZOMBIE__HPP
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -14,3 +16,4 @@ public:
 };
 
 Zombie* zombieHorde( int N, std::string name );
+#endif

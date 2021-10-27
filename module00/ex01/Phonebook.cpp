@@ -62,7 +62,7 @@ void Phonebook::serchContact(void)
         if (input == "return")
             return;
         index = std::atoi(input.c_str());
-        while (index > Phonebook::_contactCount || index == 0)
+        while (index > Phonebook::_contactCount || index == 0 || input.length() != 1)
         {
             std::cout << "contact not exist to retun to main menu enter return > " << std::endl;
             std::cout<<"enter contact index : ";
