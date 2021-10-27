@@ -3,14 +3,13 @@
 
 int main(void)
 {
-    Zombie *hord = zombieHorde(10, "kkk");
-    for(int i = 0; i < 10; i++)
+    int n = 50;
+    Zombie *hord = zombieHorde(n, "kkk");
+    
+    for (int i = 0; i < n ; i++)
     {
         hord[i].anonance();
+        hord[i].~Zombie();
     }
-    for(int i = 0; i < 10 ; i++)
-    {
-        delete hord;
-        hord++;
-    }
+    operator delete (hord);
 }
