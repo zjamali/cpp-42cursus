@@ -26,13 +26,14 @@ int check_arguments(int ac, char **av)
 
 int main(int ac, char **av)
 {
-    std::fstream    inputFile;
-    std::fstream    outputFile;
+    std::ifstream    inputFile;
+    std::ofstream    outputFile;
     std::string     line;
     int             found = 0;
 
     if (check_arguments(ac,av))
         return (1);
+    outputFile.open(std::strcat(av[1] ,".replace"), std::ios::out);
     inputFile.open(av[1], std::ios::in);
     if (!inputFile)
     {
@@ -43,16 +44,22 @@ int main(int ac, char **av)
     {
         found = 0;
         line.append("\n");
-        std::cout << line ;
         while (true)
         {
             found = line.find(av[2], found);
             if (found == -1)
                 break;
             std::cout << "found : " <<found << std::endl;
+            line.erase(found,std::string(av[2]).length());
+            line.insert(found,av[3]);
             found = found + 1;
         }
+        outputFile << line;
+        std::cout << line;
         if (inputFile.eof())
             break;
     }
+    outputFile.close();
+    inputFile.close();
+    return (0);
 }
