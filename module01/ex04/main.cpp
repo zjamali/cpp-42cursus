@@ -33,29 +33,28 @@ int main(int ac, char **av)
 
     if (check_arguments(ac,av))
         return (1);
-    outputFile.open(std::strcat(av[1] ,".replace"), std::ios::out);
     inputFile.open(av[1], std::ios::in);
     if (!inputFile)
     {
     	std::cout << "File not exist!" <<  std::endl;
         return (1);
 	}
+    outputFile.open(std::string("") + av[1] +  ".replace");
     while (std::getline(inputFile, line))
     {
         found = 0;
-        line.append("\n");
+        if(!inputFile.eof())
+            line.append("\n");
         while (true)
         {
             found = line.find(av[2], found);
             if (found == -1)
                 break;
-            std::cout << "found : " <<found << std::endl;
             line.erase(found,std::string(av[2]).length());
             line.insert(found,av[3]);
             found = found + 1;
         }
         outputFile << line;
-        std::cout << line;
         if (inputFile.eof())
             break;
     }
