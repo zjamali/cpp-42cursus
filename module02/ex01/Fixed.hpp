@@ -21,4 +21,5 @@ public:
     Fixed &operator=( const Fixed &obj);
 };
 
+std::ostream& operator<< (std::ostream& out, const Fixed& obj);
 #endif
