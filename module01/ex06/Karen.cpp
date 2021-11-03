@@ -10,6 +10,7 @@ Karen::Karen()
 
 Karen::~Karen()
 {
+    
 }
 
 void Karen::debug(void) {

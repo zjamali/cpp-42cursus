@@ -2,10 +2,10 @@
 
 int main()
 {
-    ClapTrap palyer("Jamali");
-    ClapTrap palyer1;
+    ClapTrap player("Jamali");
+    ClapTrap player1;
 
-    palyer.attack("Zouhair");
-    palyer1.takeDamage(1);
-    palyer.beRepaired(5);
+    player.attack("Zouhair");
+    player1.takeDamage(1);
+    player.beRepaired(5);
 }

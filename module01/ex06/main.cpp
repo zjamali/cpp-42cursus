@@ -50,8 +50,8 @@ int main(int ac, char **av)
       w.complain("ERROR");
       break;
     default:
-      std::cout << "Undifined LOG" << std::endl;
-      return (1);
+      std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+      break;
     }
     return (0);
 }

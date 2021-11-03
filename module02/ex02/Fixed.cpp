@@ -175,4 +175,3 @@ bool  operator!=(const Fixed &a, const Fixed &b)
     else
         return (false);
 }
-
