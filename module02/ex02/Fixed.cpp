@@ -95,7 +95,6 @@ Fixed &Fixed::operator--(){
     return (*this);
 }
 
-
 Fixed Fixed::operator+(const Fixed obj) const {
     Fixed newObj;
     newObj._fixed = this->_fixed + obj._fixed;
@@ -112,17 +111,16 @@ Fixed Fixed::operator-(const Fixed obj) const {
 Fixed Fixed::operator*(const Fixed obj) const {
     Fixed newObj;
 
-    newObj._fixed = this->_fixed * obj._fixed ;
+    newObj._fixed = (this->_fixed * obj._fixed) >> this->_fraction;
     return (newObj);
 }
 
 Fixed Fixed::operator/(const Fixed obj) const {
     Fixed newObj;
 
-    newObj._fixed = this->_fixed / obj._fixed ;
+    newObj._fixed = (this->_fixed / obj._fixed) << this->_fraction;
     return (newObj);
 }
-
 
 std::ostream& operator<< (std::ostream& out, const Fixed& obj)
 {
