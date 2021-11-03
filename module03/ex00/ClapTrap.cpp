@@ -18,6 +18,21 @@ ClapTrap::ClapTrap(std::string name)
     this->_hitPoints = 10;
 }
 
+ClapTrap::ClapTrap(ClapTrap const &obj)
+{
+    std::cout << "copy constructor called" << std::endl;
+    *this = obj;
+}
+
+ClapTrap &ClapTrap::operator=(ClapTrap const &obj)
+{
+    this->_Name = obj._Name;
+    this->_energyPoints = obj._energyPoints;
+    this->_attackDamage = obj._energyPoints;
+    this->_hitPoints = obj._hitPoints;
+    return (*this);
+}
+
 ClapTrap::~ClapTrap()
 {
     std::cout << "destuctor called" << std::endl;
