@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(): ClapTrap()
+ScavTrap::ScavTrap()
 {
     std::cout << " ScavTrap default constuctor called" << std::endl;
     this->_Name = "user";

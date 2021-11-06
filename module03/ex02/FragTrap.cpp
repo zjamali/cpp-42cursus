@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(): ClapTrap()
+FragTrap::FragTrap()
 {
     std::cout << " FragTrap default constuctor called" << std::endl;
     this->_Name = "user";
