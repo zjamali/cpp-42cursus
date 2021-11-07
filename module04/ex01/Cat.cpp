@@ -2,14 +2,9 @@
 
 Cat::Cat()
 {
-     std::cout << "Cat Default Constructor called" << std::endl;
+    std::cout << "Cat  Constructor called" << std::endl;
     this->type = "Cat";
-}
-
-Cat::Cat(std::string type)
-{
-    std::cout << "Cat Parametre Constructor called" << std::endl;
-    this->type = type;
+    this->_brain = new Brain();
 }
 
 Cat::Cat(Cat const &obj)
@@ -22,15 +17,26 @@ Cat &Cat::operator=(Cat const &obj)
 {
     std::cout << "cat Assign operator called" << std::endl;
     this->type = obj.type;
+    this->_brain = obj._brain;
     return (*this);
 }
 Cat::~Cat()
 {
+    delete this->_brain;
     std::cout << "cat destuctor called" << std::endl;
+}
+
+void Cat::printBrainIdeas(void) const 
+{
+    this->_brain->printBrainIdeas();
+}
+void    Cat::setBrainIdeas(std::string idea)
+{
+    this->_brain->setBrainIdeas(idea);
 }
 
 
 void Cat::makeSound(void) const
 {
-    std::cout << "Meaow" << std::endl;
+    std::cout << "Meaw Meaw" << std::endl;
 }

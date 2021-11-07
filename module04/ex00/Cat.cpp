@@ -2,14 +2,8 @@
 
 Cat::Cat()
 {
-     std::cout << "Cat Default Constructor called" << std::endl;
+     std::cout << "Cat Constructor called" << std::endl;
     this->type = "Cat";
-}
-
-Cat::Cat(std::string type)
-{
-    std::cout << "Cat Parametre Constructor called" << std::endl;
-    this->type = type;
 }
 
 Cat::Cat(Cat const &obj)

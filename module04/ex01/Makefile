@@ -1,11 +1,11 @@
-NAME = Polymorphism
+NAME = Animal
 CFLAGS = -Wall -Werror -Wextra
 CC = clang++
 
-SRC_NAME = Animal.cpp Cat.cpp Dog.cpp main.cpp
+SRC_NAME = Animal.cpp Cat.cpp Dog.cpp main.cpp Brain.cpp
 
 OBJ_NAME = $(SRC_NAME:%.cpp=%.o)
-HEADERS = Animal.hpp Cat.hpp Dog.hpp
+HEADERS = Animal.hpp Cat.hpp Dog.hpp Brain.hpp
 
 all: $(NAME)
 

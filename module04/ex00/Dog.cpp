@@ -2,14 +2,8 @@
 
 Dog::Dog()
 {
-     std::cout << "Dog Default Constructor called" << std::endl;
+     std::cout << "DogConstructor called" << std::endl;
     this->type = "Dog";
-}
-
-Dog::Dog(std::string type)
-{
-    std::cout << "Dog Parametre Constructor called" << std::endl;
-    this->type = type;
 }
 
 Dog::Dog(Dog const &obj)
