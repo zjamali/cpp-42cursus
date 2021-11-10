@@ -3,7 +3,7 @@
 Cure::Cure()
 {
     std::cout << "Cure default constructor called" << std::endl;
-    this->type = "Cure";
+    this->type = "cure";
 }
 Cure::Cure(Cure const &obj)
 {
@@ -25,8 +25,7 @@ Cure::~Cure()
 
 AMateria *Cure::clone() const 
 {
-    Cure *obj = new Cure();
-    return obj;
+    return (new Cure());
 }
 
 void Cure::use(ICharacter &target)

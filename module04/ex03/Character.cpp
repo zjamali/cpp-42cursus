@@ -3,7 +3,7 @@
 Character::Character()
 {
     std::cout << "Charcter default constructor called" << std::endl;
-    this->_name = std::string("Character" + rand() % 10);
+    this->_name = std::string("Character" + std::to_string(rand() % 10));
     this->_materialCount = 0;
 }
 
@@ -30,6 +30,7 @@ Character &Character::operator=(Character const &obj)
         this->_inventory[i] = obj._inventory[i]->clone();
         delete obj._inventory[i];
     }
+    return (*this);
 }
 
 Character::~Character() 
@@ -68,6 +69,9 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter &target)
 {
-    if (idx << this->_materialCount)
+    
+    if (idx < this->_materialCount)
+    {
         this->_inventory[idx]->use(target);
+    }
 }

@@ -18,15 +18,18 @@ MateriaSource &MateriaSource::operator=(MateriaSource const &obj)
     {
         this->_memory[i] = obj._memory[i]->clone();
     }
+    return (*this);
 }
 
 void MateriaSource::learnMateria(AMateria *m)
 {
     if (this->_materialCount < 4)
     {
+        std::cout << "check"  << m->getType() << "hello" << std::endl;
         this->_memory[this->_materialCount] = m->clone();
         this->_materialCount++;
     }
+    //std::cout << " learn :material counter:" <<this->_materialCount << std::endl;
 }
 
 AMateria *MateriaSource::createMateria(std::string const &type)
@@ -36,8 +39,9 @@ AMateria *MateriaSource::createMateria(std::string const &type)
         if (this->_memory[i]->getType() == type)
         {
             return (this->_memory[i]->clone());
-        }        
+        }
     }
+    std::cout << "material counter:" <<this->_materialCount << std::endl;
     return (0);
 }
 
