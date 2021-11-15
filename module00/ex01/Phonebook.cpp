@@ -7,10 +7,12 @@ Phonebook::Phonebook()
 {
    Phonebook::_contactCount = 0;
    Phonebook::_index = 0;
+   std::cout << "Phonebook constructor called" << std::endl;
 }
 
 Phonebook::~Phonebook()
 {
+    std::cout << "Phonebook destructor called" << std::endl;
 }
 
 void Phonebook::addContact(void)
@@ -18,10 +20,10 @@ void Phonebook::addContact(void)
     std::string input;
 
     std::cout<< "----------------ADD CONTACT----------"<<std::endl;
-    std::cout<< "enter the first name:" ;
+    std::cout<< "enter the first name:";
     std::getline(std::cin, input);
     _contact[_index].setFirstName(input);
-    std::cout<< "enter the last name:" ;
+    std::cout<< "enter the last name:";
     std::getline(std::cin, input);
     _contact[_index].setLastName(input);
     std::cout<< "enter the nickname:" ;
@@ -45,9 +47,7 @@ void Phonebook::serchContact(void)
     int index;
 
     if (_contactCount == 0)
-    {
-        std::cout<< std::setw(45)<< "NO CONTACT FOUND "<<std::endl;
-    }
+        std::cout<< "NO CONTACT FOUND "<<std::endl;
     else
     {
         std::cout<<"--------------SEARCH CONTACT-----------------"<<std::endl;
@@ -59,7 +59,7 @@ void Phonebook::serchContact(void)
         }
         std::cout<<"enter contact index or type retun to return to main > ";
         std::getline(std::cin, input);
-        if (input == "return")
+        if (input == "return" || std::cin.eof())
             return;
         index = std::atoi(input.c_str());
         while (index > Phonebook::_contactCount || index == 0 || input.length() != 1)
@@ -67,7 +67,7 @@ void Phonebook::serchContact(void)
             std::cout << "contact not exist to retun to main menu enter return > " << std::endl;
             std::cout<<"enter contact index : ";
             std::getline(std::cin, input);
-            if (input == "return")
+            if (input == "return" || std::cin.eof())
                 return;
             index = std::atoi(input.c_str());
         }
@@ -98,6 +98,7 @@ void Phonebook::printContact(int index) const{
 
 void Phonebook::contactOutputCheck(std::string output) const {
     int i = 0;
+
     if(output.size() > 10)
     {
         while (i < 9)
@@ -108,7 +109,5 @@ void Phonebook::contactOutputCheck(std::string output) const {
         std::cout<< ".";
     }
     else
-    {
         std::cout <<std::setw(10) << output;
-    }
 }

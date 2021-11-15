@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 15:57:22 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/26 18:28:13 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/11/15 08:50:09 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,10 @@ void	Account::_displayTimestamp( void )
 {
     time_t rawtime;
     struct tm *timeinfo;
-    char buffer [80];
+    char buffer[80];
 
-    time (&rawtime);
-    timeinfo = localtime (&rawtime);
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
 
     strftime(buffer,80,"[%Y%m%d_%I%M%S] ",timeinfo);
     std::cout<< buffer ;

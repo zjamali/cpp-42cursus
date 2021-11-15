@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 18:27:30 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/27 20:20:41 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/11/15 12:27:21 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,14 @@ int main()
     while(std::getline(std::cin, command))
     {
         if (command == "ADD")
-        {
             phone.addContact();
-        }
         else if (command == "SEARCH")
-        {
             phone.serchContact();
-        }
         else if (command == "EXIT")
-        {
             return (0);
-        }
         else
-        {
             std::cout<< "Please, type ADD,SEARCH or EXIT" <<std::endl;
-        }
+        
         std::cout<< std::endl;
         std::cout<< "-------------------------------------------"<<std::endl;
         std::cout<< "| -> to add a contact type ADD            |"<<std::endl;

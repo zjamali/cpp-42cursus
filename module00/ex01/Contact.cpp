@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 17:59:31 by zjamali           #+#    #+#             */
-/*   Updated: 2021/10/06 18:45:52 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/11/15 12:31:16 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 #include "Contact.hpp"
 
 Contact::Contact()
-{   
+{
+        std::cout << "Contact constructor called" << std::endl;
 }
 
 Contact::~Contact()
 {
+        std::cout << "Contcat destructor called" << std::endl;
 }
 
 std::string     Contact::getFirstName(void) const {

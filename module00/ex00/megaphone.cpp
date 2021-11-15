@@ -2,16 +2,13 @@
 
 int main(int argc, char **argv)
 {
-    std::string str;
-
     if (argc > 1)
     {
         for (int i = 1; i < argc; i++)
         {
-            str = argv[i];
-            for (int i = 0; str[i]; i++)
+            for (int j = 0; argv[i][j] ; j++)
             {
-                std::cout << (char)toupper(str[i]) ;
+                std::cout << (char)toupper(argv[i][j]) ;
             }
         }
         std::cout << std::endl;
