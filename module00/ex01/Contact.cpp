@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 17:59:31 by zjamali           #+#    #+#             */
-/*   Updated: 2021/11/15 12:31:16 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/11/15 19:52:18 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ Contact::Contact()
 {
         std::cout << "Contact constructor called" << std::endl;
 }
+
 
 Contact::~Contact()
 {
