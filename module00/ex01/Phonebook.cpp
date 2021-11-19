@@ -40,7 +40,7 @@ void Phonebook::addContact(void)
     if (_contactCount < 8)
         _contactCount++;
 }
-void Phonebook::serchContact(void)
+void Phonebook::searchContact(void)
 {
     int i = 0;
     std::string input;
@@ -103,11 +103,22 @@ void Phonebook::contactOutputCheck(std::string output) const {
     {
         while (i < 9)
         {
-            std::cout<< output[i];
+            if (output[i] == '\t')
+                std::cout << " ";
+            else
+                std::cout<< output[i];
             i++;
         }
         std::cout<< ".";
     }
     else
-        std::cout <<std::setw(10) << output;
+    {
+        while (i < (int)output.size())
+        {
+            if (output[i] == '\t')
+                output[i] = ' ';
+            i++;
+        }
+        std::cout << std::setw(10) << output;
+    }
 }

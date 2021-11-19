@@ -4,7 +4,7 @@ DiamondTrap::DiamondTrap()
 {
     std::cout << " DiamondTrap default constuctor called" << std::endl;
     this->_Name = "user";
-    FragTrap::_Name = DiamondTrap::_Name + "_clap_name";
+    DiamondTrap::_Name = DiamondTrap::_Name + "_clap_name";
     this->_hitPoints = FragTrap::_hitPoints;
     this->_energyPoints = ScavTrap::_energyPoints;
     this->_attackDamage = FragTrap::_attackDamage;

@@ -16,7 +16,7 @@ public:
 	Phonebook();
 	~Phonebook(void);
 	void		addContact(void);
-	void		serchContact(void);
+	void		searchContact(void);
 };
 
 #endif

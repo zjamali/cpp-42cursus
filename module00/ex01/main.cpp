@@ -6,7 +6,7 @@
 /*   By: zjamali <zjamali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 18:27:30 by zjamali           #+#    #+#             */
-/*   Updated: 2021/11/15 12:27:21 by zjamali          ###   ########.fr       */
+/*   Updated: 2021/11/19 18:33:06 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main()
         if (command == "ADD")
             phone.addContact();
         else if (command == "SEARCH")
-            phone.serchContact();
+            phone.searchContact();
         else if (command == "EXIT")
             return (0);
         else
