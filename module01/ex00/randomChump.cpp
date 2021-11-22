@@ -3,5 +3,5 @@
 void randomChump(std::string name)
 {
     Zombie z(name);
-    z.anonance();
+    z.announce();
 }

@@ -5,11 +5,18 @@ CC = clang++
 
 SRC_NAME =	main.cpp
 
+OBJ_NAME = $(SRC_NAME:%.cpp=%.o)
+
 all: $(NAME)
 
-$(NAME): $(SRC_NAME)
-	$(CC) $(CFLAGS) $(SRC_NAME) -o $@
+$(NAME): $(OBJ_NAME)
+	$(CC) $^ -o $@
 
-fclean:
+%.o: %.cpp $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean :
+	rm -f $(OBJ_NAME)
+fclean: clean 
 	rm -rf $(NAME)
 re: fclean all

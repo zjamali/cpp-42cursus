@@ -33,7 +33,7 @@ int main(int ac, char **av)
 
     if (check_arguments(ac,av))
         return (1);
-    inputFile.open(av[1], std::ios::in);
+    inputFile.open(av[1]);
     if (!inputFile)
     {
     	std::cout << "File not exist!" <<  std::endl;
@@ -52,7 +52,7 @@ int main(int ac, char **av)
                 break;
             line.erase(found,std::string(av[2]).length());
             line.insert(found,av[3]);
-            found = found + 1;
+            found = found + std::string(av[3]).size();
         }
         outputFile << line;
         if (inputFile.eof())

@@ -1,5 +1,5 @@
 #ifndef ZOMBIE_HPP
-#define ZOMBIE__HPP
+#define ZOMBIE_HPP
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -10,7 +10,7 @@ private:
     std::string _name;
 
 public:
-    void anonance();
+    void announce();
     Zombie(std::string name);
     ~Zombie();
 };

@@ -1,6 +1,6 @@
 #include "zombie.hpp"
 
-void Zombie::anonance()
+void Zombie::announce()
 {
     std::cout << _name << " BraiiiiiiinnnzzzZ..." << std::endl;
 }

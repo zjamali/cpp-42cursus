@@ -2,7 +2,7 @@
 
 Zombie* zombieHorde( int N, std::string name )
 {
-    Zombie *zombieHord = (Zombie *)operator new (N* sizeof(Zombie));
+    Zombie *zombieHord = (Zombie *)operator new (N * sizeof(Zombie));
     
     for(int i = 0; i < N ; i++)
     {

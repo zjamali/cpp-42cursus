@@ -3,10 +3,16 @@
 HumanB::HumanB(std::string name):_weapon(nullptr)
 {
     this->_name =name;
+    /*
+    *   std::cout << "HumanB constructor called" << std::endl;
+    */
 }
 
 HumanB::~HumanB()
 {
+    /*
+    *   std::cout << "HumanB constructor called" << std::endl;
+    */
 }
 
 void HumanB::attack(void)

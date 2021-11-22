@@ -10,7 +10,9 @@ Karen::Karen()
 
 Karen::~Karen()
 {
-    
+    /*
+    * std::cout << "Karen destructor called" << std::endl;
+    */
 }
 
 void Karen::debug(void) {

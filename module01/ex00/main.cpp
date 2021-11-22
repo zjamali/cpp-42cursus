@@ -3,8 +3,8 @@
 
 int main(void)
 {
-    Zombie *z= newZombie("hello");
-    z->anonance();
+    Zombie *z= newZombie("zouhair");
+    z->announce();
     delete z;
     randomChump("ZOUHAIR");
 }
