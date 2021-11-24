@@ -1,8 +1,9 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name):_weapon(nullptr)
+HumanB::HumanB(std::string name)
 {
     this->_name =name;
+    _weapon = nullptr;
     /*
     *   std::cout << "HumanB constructor called" << std::endl;
     */

@@ -24,35 +24,40 @@ int check_arguments(int ac, char **av)
     }
 }
 
+void replace(std::string &line, std::string to_replace,std::string replace_with, int &found_pos)
+{
+    line.erase(found_pos, to_replace.length());
+    line.insert(found_pos, replace_with);
+    found_pos = found_pos + replace_with.length();
+}
+
 int main(int ac, char **av)
 {
-    std::ifstream    inputFile;
-    std::ofstream    outputFile;
-    std::string     line;
-    int             found = 0;
+    std::ifstream inputFile;
+    std::ofstream outputFile;
+    std::string line;
+    int found_pos = 0;
 
-    if (check_arguments(ac,av))
+    if (check_arguments(ac, av))
         return (1);
     inputFile.open(av[1]);
-    if (!inputFile)
+    if (inputFile.fail())
     {
-    	std::cout << "File not exist!" <<  std::endl;
+        std::cout << "File could not open!" << std::endl;
         return (1);
-	}
-    outputFile.open(std::string("") + av[1] +  ".replace");
+    }
+    outputFile.open(std::string("") + av[1] + ".replace");
     while (std::getline(inputFile, line))
     {
-        found = 0;
-        if(!inputFile.eof())
+        found_pos = 0;
+        if (!inputFile.eof())
             line.append("\n");
         while (true)
         {
-            found = line.find(av[2], found);
-            if (found == -1)
+            found_pos = line.find(av[2], found_pos);
+            if (found_pos == -1)
                 break;
-            line.erase(found,std::string(av[2]).length());
-            line.insert(found,av[3]);
-            found = found + std::string(av[3]).size();
+            replace(line, av[2], av[3], found_pos);
         }
         outputFile << line;
         if (inputFile.eof())

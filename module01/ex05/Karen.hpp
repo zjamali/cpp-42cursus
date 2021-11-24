@@ -9,12 +9,12 @@ private:
     void info(void);
     void warning(void);
     void error(void);
+    void (Karen::*complainsPtr[4])();
 
 public:
     Karen();
     ~Karen();
-    void    complain( std::string level );
-    void    (Karen::*complainsPtr[4])();
+    void    complain(std::string level);
 };
 
 #endif

@@ -9,6 +9,8 @@ Fixed::Fixed()
 Fixed::Fixed( Fixed const &obj)
 {
     // std::cout << "Copy constructor called" << std::endl;
+    if (this == &obj)
+        return ;
     *this  = obj;
 }
 
@@ -80,7 +82,7 @@ Fixed Fixed::operator++(int){
 }
 
 Fixed &Fixed::operator++(){
-    this->_fixed = this->_fixed + (1 << this->_fraction);
+    this->_fixed = this->_fixed + 1;
     return (*this);
 }
 
@@ -91,7 +93,7 @@ Fixed Fixed::operator--(int){
 }
 
 Fixed &Fixed::operator--(){
-    this->_fixed = this->_fixed - (1 << this->_fraction);
+    this->_fixed = this->_fixed - 1;
     return (*this);
 }
 
@@ -118,7 +120,7 @@ Fixed Fixed::operator*(const Fixed obj) const {
 Fixed Fixed::operator/(const Fixed obj) const {
     Fixed newObj;
 
-    newObj._fixed = (this->_fixed / obj._fixed) << this->_fraction;
+    newObj._fixed = (((long) this->_fixed) << this->_fraction) / obj._fixed ;
     return (newObj);
 }
 
@@ -128,7 +130,7 @@ std::ostream& operator<< (std::ostream& out, const Fixed& obj)
     return out;
 }
 
- bool  operator<(const Fixed &a, const Fixed &b)
+bool  operator<(const Fixed &a, const Fixed &b)
 {
     if (a.getRawBits() < b.getRawBits())
         return (true);
@@ -136,7 +138,7 @@ std::ostream& operator<< (std::ostream& out, const Fixed& obj)
         return (false);
 }
 
- bool  operator>(const Fixed &a, const Fixed &b)
+bool  operator>(const Fixed &a, const Fixed &b)
 {
     if (a.getRawBits() > b.getRawBits())
         return (true);
@@ -152,7 +154,7 @@ bool  operator<=(const Fixed &a, const Fixed &b)
         return (false);
 }
 
- bool operator>=(const Fixed &a, const Fixed &b)
+bool operator>=(const Fixed &a, const Fixed &b)
 {
     if (a.getRawBits() >= b.getRawBits())
         return (true);
@@ -160,7 +162,7 @@ bool  operator<=(const Fixed &a, const Fixed &b)
         return (false);
 }
 
- bool  operator==(const Fixed &a, const Fixed &b)
+bool  operator==(const Fixed &a, const Fixed &b)
 {
     if (a.getRawBits() == b.getRawBits())
         return (true);

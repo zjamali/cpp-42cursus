@@ -9,6 +9,8 @@ Fixed::Fixed()
 Fixed::Fixed( Fixed const &obj)
 {
     std::cout << "Copy constructor called" << std::endl;
+    if (this == &obj)
+        return ;
     *this  = obj;
 }
 
