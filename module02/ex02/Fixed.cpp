@@ -97,30 +97,30 @@ Fixed &Fixed::operator--(){
     return (*this);
 }
 
-Fixed Fixed::operator+(const Fixed obj) const {
+Fixed Fixed::operator+(const Fixed &obj) const {
     Fixed newObj;
     newObj._fixed = this->_fixed + obj._fixed;
     return (newObj);
 }
 
-Fixed Fixed::operator-(const Fixed obj) const {
+Fixed Fixed::operator-(const Fixed &obj) const {
     Fixed newObj;
 
     newObj._fixed = this->_fixed - obj._fixed;
     return (newObj);
 }
 
-Fixed Fixed::operator*(const Fixed obj) const {
+Fixed Fixed::operator*(const Fixed &obj) const {
     Fixed newObj;
 
-    newObj._fixed = ((long)this->_fixed * (long)obj._fixed) >> this->_fraction;
+    newObj._fixed = (int)(((long)this->_fixed * (long)obj._fixed) >> this->_fraction);
     return (newObj);
 }
 
-Fixed Fixed::operator/(const Fixed obj) const {
+Fixed Fixed::operator/(const Fixed &obj) const {
     Fixed newObj;
 
-    newObj._fixed = (((long) this->_fixed) << this->_fraction) / obj._fixed ;
+    newObj._fixed = (int)((((long) this->_fixed) << this->_fraction) / obj._fixed) ;
     return (newObj);
 }
 

@@ -25,10 +25,10 @@ public:
     Fixed operator++(int);
     Fixed &operator--();
     Fixed operator--(int);
-    Fixed operator+(const Fixed obj) const;
-    Fixed operator-(const Fixed obj) const;
-    Fixed operator*(const Fixed obj) const;
-    Fixed operator/(const Fixed obj) const;
+    Fixed operator+(const Fixed &obj) const;
+    Fixed operator-(const Fixed &obj) const;
+    Fixed operator*(const Fixed &obj) const;
+    Fixed operator/(const Fixed &obj) const;
 
     static Fixed const &max(const Fixed &a, const Fixed &b);
     static Fixed const &min(const Fixed &a, const Fixed &b);
