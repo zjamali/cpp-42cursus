@@ -24,6 +24,6 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 
     if (triangleArea == area1 + area2 + area3 && area1 != 0 && area2 != 0  && area3 != 0)
         return (true);
-    else 
+    else
         return (false);
 }

@@ -7,5 +7,6 @@ int main()
 //
     player.attack("Zouhair");
     player1.takeDamage(1);
+    player1.beRepaired(5);
     player1.highFivesGuys();
 }
