@@ -21,7 +21,20 @@ Point &Point::operator=(Point const &obj)
     return (*this);
 }
 
+Fixed const &Point::getX() const
+{
+    return (x);
+}
+
+Fixed const &Point::getY() const
+{
+    return (y);
+}
+
+
+
 Point::~Point()
 {
+
 }
 

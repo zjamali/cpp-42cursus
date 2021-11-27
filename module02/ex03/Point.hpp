@@ -13,6 +13,8 @@ public:
     Point(Point const &obj);
     Point(float x, float y);
     Point &operator=(Point const &obj);
+    Fixed const &getX() const;
+    Fixed const &getY() const;
 
     ~Point();
 };
