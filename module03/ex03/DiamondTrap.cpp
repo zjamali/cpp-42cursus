@@ -4,7 +4,7 @@ DiamondTrap::DiamondTrap()
 {
     std::cout << "<> DiamondTrap default constuctor called" << std::endl;
     this->_Name = "user";
-    DiamondTrap::_Name = DiamondTrap::_Name + "_clap_name";
+    ClapTrap::_Name = DiamondTrap::_Name + "_clap_name";
     this->_hitPoints = 100;
     this->_energyPoints = 100;
     this->_attackDamage = 30;
@@ -14,7 +14,7 @@ DiamondTrap::DiamondTrap(std::string name)
 {
     std::cout << "<> DiamondTrap parametre constuctor called" << std::endl;
     this->_Name = name;
-    FragTrap::_Name = DiamondTrap::_Name + "_clap_name";
+    ClapTrap::_Name = DiamondTrap::_Name + "_clap_name";
     this->_hitPoints = 100;
     this->_energyPoints = 100;
     this->_attackDamage = 30;
@@ -45,5 +45,5 @@ DiamondTrap::~DiamondTrap()
 
 void DiamondTrap::whoAmI(void)
 {
-    std::cout << "my name is " << this->_Name << " and name of ClapTrap is " << ClapTrap::_Name << std::endl;
+    std::cout << "my name is " << _Name << " and name of ClapTrap is " << ClapTrap::_Name << std::endl;
 }

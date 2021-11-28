@@ -8,9 +8,9 @@ int main()
 
     std::cout << std::endl;
     player.attack("hello");
-    player.whoAmI();
     player.attack("victim");
     player.takeDamage(80);
     player.beRepaired(20);
+    player.whoAmI();
     std::cout << std::endl;
 }

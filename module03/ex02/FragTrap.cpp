@@ -42,7 +42,12 @@ FragTrap::~FragTrap()
     std::cout << "* FragTrap destuctor called" << std::endl;
 }
 
+void FragTrap::attack(std::string const & target)
+{
+    std::cout << "FrapTrap " << this->_Name << " attack " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+}
+
 void FragTrap::highFivesGuys(void)
 {
-    std::cout << "FragTrap high Five guys 👋" << std::endl;
+    std::cout << "FragTrap high Five guys " << std::endl;
 }
