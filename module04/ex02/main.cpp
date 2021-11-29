@@ -4,9 +4,12 @@
 int main()
 {
 
-    //const Animal *j = new Animal();
-    const Animal *i = new Cat();
+    Animal *j = new Cat();
+    Animal *i = new Dog();
+
+    *i = *j;
     // delete j;
+    std::cout << i->getType() <<std::endl;
     delete i;
 
 }
