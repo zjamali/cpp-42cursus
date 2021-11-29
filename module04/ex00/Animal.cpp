@@ -15,7 +15,8 @@ Animal::Animal(std::string const type)
 Animal::Animal(Animal const &obj) 
 {
     std::cout << "Animal copy Constructor called" << std::endl;
-    (*this) = obj;
+    if (this != &obj)
+        (*this) = obj;
 }
 Animal &Animal::operator=(Animal const &obj) 
 {
@@ -24,17 +25,18 @@ Animal &Animal::operator=(Animal const &obj)
     return (*this);
 }
 
-std::string Animal::getType(void) const
+
+Animal::~Animal()
+{
+    std::cout << "Animal destuctor called" << std::endl;
+}
+
+std::string const& Animal::getType(void) const
 {
     return (this->type);
 }
 
 void Animal::makeSound(void) const
 {
-
-}
-
-Animal::~Animal()
-{
-    std::cout << "Animal destuctor called" << std::endl;
+    std::cout << "Animal makes sound" << std::endl;
 }

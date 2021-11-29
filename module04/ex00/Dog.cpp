@@ -2,14 +2,15 @@
 
 Dog::Dog()
 {
-     std::cout << "DogConstructor called" << std::endl;
+    std::cout << "Dog Constructor called" << std::endl;
     this->type = "Dog";
 }
 
 Dog::Dog(Dog const &obj)
 {
     std::cout << "Dog copy Constructor called" << std::endl;
-    (*this) = obj;
+    if (this != &obj)
+        (*this) = obj;
 }
 
 Dog &Dog::operator=(Dog const &obj) 

@@ -9,6 +9,7 @@ WrongCat::WrongCat()
 WrongCat::WrongCat(WrongCat const &obj)
 {
     std::cout << "WrongCat copy Constructor called" << std::endl;
+    if (this != &obj)
     (*this) = obj;
 }
 
@@ -23,8 +24,7 @@ WrongCat::~WrongCat()
     std::cout << "WrongCat destuctor called" << std::endl;
 }
 
-
 void WrongCat::makeSound(void) const
 {
-    std::cout << "Mooooooooooooo" << std::endl;
+    std::cout << "Wrong cat sound???" << std::endl;
 }
