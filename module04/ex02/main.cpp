@@ -4,9 +4,9 @@
 int main()
 {
 
-    // const Animal *j = new Animal();
+    //const Animal *j = new Animal();
     const Animal *i = new Cat();
-   // delete j;
+    // delete j;
     delete i;
 
 }
