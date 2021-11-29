@@ -12,26 +12,27 @@ Animal::Animal(std::string const type)
     this->type = type;
 }
 
-Animal::Animal(Animal const &obj) 
+Animal::Animal(Animal const &obj)
 {
     std::cout << "Animal copy Constructor called" << std::endl;
-    if (this != &obj)
-        (*this) = obj;
+    (*this) = obj;
 }
-Animal &Animal::operator=(Animal const &obj) 
+Animal &Animal::operator=(Animal const &obj)
 {
-    std::cout << "Animal Assign operator called" << std::endl;
-    this->type = obj.type;
+    if (this != &obj)
+    {
+        std::cout << "Animal Assign operator called" << std::endl;
+        this->type = obj.type;
+    }
     return (*this);
 }
-
 
 Animal::~Animal()
 {
     std::cout << "Animal destuctor called" << std::endl;
 }
 
-std::string const& Animal::getType(void) const
+std::string const &Animal::getType(void) const
 {
     return (this->type);
 }

@@ -6,6 +6,7 @@ class WrongAnimal
 {
 protected:
     std::string type;
+
 public:
     WrongAnimal();
     WrongAnimal(std::string const type);
@@ -13,7 +14,7 @@ public:
     WrongAnimal &operator=(WrongAnimal const &obj);
     ~WrongAnimal();
 
-    std::string const& getType() const;
+    std::string const &getType() const;
     void makeSound(void) const;
 };
 

@@ -15,10 +15,13 @@ int main()
     meta->makeSound();
 
     std::cout << std::endl;
+
     delete meta;
     delete j;
     delete i;
+
     std::cout << std::endl;
+
     std::cout << "---- Wrong animal testing ----" << std::endl;
     std::cout << std::endl;
     const WrongAnimal *wrongAnimal = new WrongAnimal();

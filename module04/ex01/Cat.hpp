@@ -14,10 +14,8 @@ public:
     Cat &operator=(Cat const &obj);
     ~Cat();
 
-    void printBrainIdeas(void) const;
-    void setBrainIdeas(std::string idea);
-
     void makeSound(void) const;
+
 };
 
 #endif

@@ -2,21 +2,24 @@
 
 Cat::Cat()
 {
-     std::cout << "Cat Constructor called" << std::endl;
+    std::cout << "Cat Constructor called" << std::endl;
     this->type = "Cat";
 }
 
 Cat::Cat(Cat const &obj)
 {
     std::cout << "Cat copy Constructor called" << std::endl;
-    if (this != &obj)
-        (*this) = obj;
+
+    (*this) = obj;
 }
 
-Cat &Cat::operator=(Cat const &obj) 
+Cat &Cat::operator=(Cat const &obj)
 {
-    std::cout << "cat Assign operator called" << std::endl;
-    this->type = obj.type;
+    if (this != &obj)
+    {
+        std::cout << "cat Assign operator called" << std::endl;
+        this->type = obj.type;
+    }
     return (*this);
 }
 

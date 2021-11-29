@@ -2,7 +2,7 @@
 
 Cat::Cat()
 {
-    std::cout << "Cat  Constructor called" << std::endl;
+    std::cout << "Cat Constructor called" << std::endl;
     this->type = "Cat";
     this->_brain = new Brain();
 }
@@ -13,30 +13,29 @@ Cat::Cat(Cat const &obj)
     (*this) = obj;
 }
 
-Cat &Cat::operator=(Cat const &obj) 
+Cat &Cat::operator=(Cat const &obj)
 {
-    std::cout << "cat Assign operator called" << std::endl;
-    this->type = obj.type;
-    this->_brain = obj._brain;
+    if (this != &obj)
+    {
+        std::cout << "cat Assign operator called" << std::endl;
+        this->type = obj.type;
+        if (obj._brain != nullptr)
+        {
+            delete this->_brain;
+            this->_brain = new Brain(*(obj._brain));
+        }
+    }
     return (*this);
 }
+
 Cat::~Cat()
 {
-    delete this->_brain;
     std::cout << "cat destuctor called" << std::endl;
+    delete this->_brain;
+    _brain = nullptr;
 }
-
-void Cat::printBrainIdeas(void) const 
-{
-    this->_brain->printBrainIdeas();
-}
-void    Cat::setBrainIdeas(std::string idea)
-{
-    this->_brain->setBrainIdeas(idea);
-}
-
 
 void Cat::makeSound(void) const
 {
-    std::cout << "Meaw Meaw" << std::endl;
+    std::cout << "Meaow Meaow" << std::endl;
 }

@@ -12,29 +12,32 @@ Animal::Animal(std::string const type)
     this->type = type;
 }
 
-Animal::Animal(Animal const &obj) 
+Animal::Animal(Animal const &obj)
 {
     std::cout << "Animal copy Constructor called" << std::endl;
     (*this) = obj;
 }
-Animal &Animal::operator=(Animal const &obj) 
+Animal &Animal::operator=(Animal const &obj)
 {
-    std::cout << "Animal Assign operator called" << std::endl;
-    this->type = obj.type;
+    if (this != &obj)
+    {
+        std::cout << "Animal Assign operator called" << std::endl;
+        this->type = obj.type;
+    }
     return (*this);
 }
 
-std::string Animal::getType(void) const
+Animal::~Animal()
+{
+    std::cout << "Animal destuctor called" << std::endl;
+}
+
+std::string const &Animal::getType(void) const
 {
     return (this->type);
 }
 
 void Animal::makeSound(void) const
 {
-
-}
-
-Animal::~Animal()
-{
-    std::cout << "Animal destuctor called" << std::endl;
+    std::cout << "Animal makes sound" << std::endl;
 }
