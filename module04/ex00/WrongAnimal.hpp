@@ -9,10 +9,10 @@ protected:
 
 public:
     WrongAnimal();
-    WrongAnimal(std::string const type);
+    WrongAnimal(std::string const &type);
     WrongAnimal(WrongAnimal const &obj);
     WrongAnimal &operator=(WrongAnimal const &obj);
-    ~WrongAnimal();
+    virtual ~WrongAnimal();
 
     std::string const &getType() const;
     void makeSound(void) const;

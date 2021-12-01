@@ -1,4 +1,4 @@
-NAME = Polymorphism
+NAME = Animal
 CFLAGS = -Wall -Werror -Wextra
 CC = clang++
 

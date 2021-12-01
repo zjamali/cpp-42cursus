@@ -1,22 +1,20 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat()
+WrongCat::WrongCat():WrongAnimal("WrongCat")
 {
     std::cout << "WrongCat Constructor called" << std::endl;
-    this->type = "WrongCat";
 }
 
-WrongCat::WrongCat(WrongCat const &obj)
+WrongCat::WrongCat(WrongCat const &obj):WrongAnimal(obj.type)
 {
     std::cout << "WrongCat copy Constructor called" << std::endl;
-    if (this != &obj)
-        (*this) = obj;
 }
 
 WrongCat &WrongCat::operator=(WrongCat const &obj)
 {
     std::cout << "WrongCat Assign operator called" << std::endl;
-    this->type = obj.type;
+    if (this != &obj)
+        this->type = obj.type;
     return (*this);
 }
 

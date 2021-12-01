@@ -8,9 +8,10 @@ private:
     AMateria *_inventory[4];
     std::string _name;
     int _materialCount;
+
 public:
     Character();
-    Character(std::string const name);
+    Character(std::string const name); // reference
     Character(Character const &obj);
     Character &operator=(Character const &obj);
     ~Character();
@@ -20,6 +21,5 @@ public:
     void unequip(int idx);
     void use(int idx, ICharacter &target);
 };
-
 
 #endif

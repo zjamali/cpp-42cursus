@@ -5,6 +5,7 @@
 
 class Cat : public Animal
 {
+
 private:
     Brain *_brain;
 
@@ -15,7 +16,6 @@ public:
     ~Cat();
 
     void makeSound(void) const;
-
 };
 
 #endif

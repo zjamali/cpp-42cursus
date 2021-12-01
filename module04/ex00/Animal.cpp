@@ -6,7 +6,7 @@ Animal::Animal()
     this->type = "";
 }
 
-Animal::Animal(std::string const type)
+Animal::Animal(std::string const &type)
 {
     std::cout << "Animal Parametre Constructor called" << std::endl;
     this->type = type;

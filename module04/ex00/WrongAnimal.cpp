@@ -6,7 +6,7 @@ WrongAnimal::WrongAnimal()
     this->type = "";
 }
 
-WrongAnimal::WrongAnimal(std::string const type)
+WrongAnimal::WrongAnimal(std::string const &type)
 {
     std::cout << "WrongAnimal Parametre Constructor called" << std::endl;
     this->type = type;
@@ -15,14 +15,14 @@ WrongAnimal::WrongAnimal(std::string const type)
 WrongAnimal::WrongAnimal(WrongAnimal const &obj)
 {
     std::cout << "WrongAnimal copy Constructor called" << std::endl;
-    if (this != &obj)
-        (*this) = obj;
+    (*this) = obj;
 }
 
 WrongAnimal &WrongAnimal::operator=(WrongAnimal const &obj)
 {
     std::cout << "WrongAnimal Assign operator called" << std::endl;
-    this->type = obj.type;
+    if (this != &obj)
+        this->type = obj.type;
     return (*this);
 }
 

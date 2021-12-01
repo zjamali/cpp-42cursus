@@ -1,16 +1,13 @@
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat():Animal("Cat")
 {
     std::cout << "Cat Constructor called" << std::endl;
-    this->type = "Cat";
 }
 
-Cat::Cat(Cat const &obj)
+Cat::Cat(Cat const &obj):Animal(obj.type)
 {
     std::cout << "Cat copy Constructor called" << std::endl;
-
-    (*this) = obj;
 }
 
 Cat &Cat::operator=(Cat const &obj)
@@ -18,7 +15,7 @@ Cat &Cat::operator=(Cat const &obj)
     if (this != &obj)
     {
         std::cout << "cat Assign operator called" << std::endl;
-        this->type = obj.type;
+        *((Animal *)this) = obj;
     }
     return (*this);
 }

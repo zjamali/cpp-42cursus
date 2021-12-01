@@ -15,7 +15,6 @@ public:
     ~Dog();
 
     void makeSound(void) const;
-    
 };
 
 #endif
