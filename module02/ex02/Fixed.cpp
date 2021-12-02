@@ -119,8 +119,7 @@ Fixed Fixed::operator*(const Fixed &obj) const {
 
 Fixed Fixed::operator/(const Fixed &obj) const {
     Fixed newObj;
-
-    newObj._fixed = (int)((((long) this->_fixed) << this->_fraction) / obj._fixed) ;
+    newObj._fixed = (int)((((long) this->_fixed) << this->_fraction) / obj._fixed);
     return (newObj);
 }
 

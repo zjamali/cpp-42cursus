@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    Fixed a;
+   /* Fixed a;
     Fixed const b(Fixed(5.05f) * Fixed(2));
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
@@ -45,5 +45,9 @@ int main(void)
     std::cout << a << std::endl;
     std::cout << a-- << std::endl;
     std::cout << a << std::endl;
+    */
+    Fixed a(1);
+    Fixed b(3);
+    std::cout << a/b << std::endl;
 
 }

@@ -2,7 +2,7 @@ NAME = Bureaucrat
 CFLAGS = -Wall -Werror -Wextra
 CC = clang++
 
-SRC_NAME = Bureaucrat.hpp
+SRC_NAME = Bureaucrat.cpp main.cpp
 
 OBJ_NAME = $(SRC_NAME:%.cpp=%.o)
 HEADERS = Bureaucrat.hpp

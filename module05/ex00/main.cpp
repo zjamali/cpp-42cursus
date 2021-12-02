@@ -2,8 +2,21 @@
 
 int main()
 {
-    std::string str1 = "hello";
-    Bureaucrat br;
-    Bureaucrat br(str1, 5);
+    try
+    {
+        Bureaucrat br1("ZZZZZ", 1);
+        std::cout << br1 << std::endl;
+        //br1.incrementGrade();
+        //Bureaucrat br2("KKKK", 0);
+
+        Bureaucrat br3("JJJJJ", 150);
+        std::cout << br3 << std::endl;
+        //br3.decrementGade();
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << e.what() << '\n';
+    }
+    
     return 0;
 }
