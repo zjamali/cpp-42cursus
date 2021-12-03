@@ -63,7 +63,6 @@ void Form::beSigned(Bureaucrat const &bureaucrat)
         this->_isSigned = true;
 }
 
-
 Form::GradeTooHighException::GradeTooHighException(std::string const &errorMessage) : _errorMessage(errorMessage)
 {
     //std::cout << "GradeTooHighException constructor called " << std::endl;
@@ -95,11 +94,32 @@ Form::GradeTooLowException::~GradeTooLowException() throw()
     //std::cout << "GradeTooLowException destructor called " << std::endl;
 }
 
+Form::FormNotSigned::FormNotSigned(std::string const &errorMessage) : _errorMessage(errorMessage)
+{
+    //std::cout << "Form not Signed constructor called " << std::endl;
+}
 
+const char *Form::FormNotSigned::what() const throw()
+{
+    return (_errorMessage.c_str());
+}
 
+Form::FormNotSigned::~FormNotSigned() throw()
+{
+    //std::cout << "GradeTooLowException destructor called " << std::endl;
+}
+
+void Form::execute(Bureaucrat const &executor) const
+{
+    if (!this->_isSigned)
+        throw FormNotSigned("the Form " + _name + " not signed");
+    if (executor.getGrade() >= this->getSignGrade())
+        throw GradeTooLowException(executor.getName() + " grade is too low to sign " + _name);
+    this->action();
+}
 
 std::ostream &operator<<(std::ostream &os, const Form &obj)
 {
-    os << obj.getName() << ", Form signed grade: " << obj.getSignGrade() << " with execute grade : " << obj.getExecuteGrade() << (obj.getIsSigned() == true ? " signd" : " not signed");
+    os << obj.getName() << ", Form signed grade: " << obj.getSignGrade() << " with execute grade : " << obj.getExecuteGrade() << (obj.getIsSigned() == true ?  "signd" : " not signed");
     return (os);
 }
