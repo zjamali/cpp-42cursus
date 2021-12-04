@@ -11,9 +11,9 @@ Bureaucrat::Bureaucrat(std::string const &name, unsigned int const &grade) : _na
     try
     {
         if (grade < HIGH_GRADE)
-            throw GradeTooHighException("the Grade entred for " + _name + "is too High, the range between 1-150.");
+            throw GradeTooHighException();
         else if (grade > LOW_GRADE)
-            throw GradeTooLowException("the Grade entred for " + _name + " is too low,  the range between 1-150.");
+            throw GradeTooLowException();
         else
             this->_grade = grade;
     }
@@ -61,14 +61,14 @@ unsigned int const &Bureaucrat::getGrade() const
 void Bureaucrat::incrementGrade()
 {
     if (this->_grade == HIGH_GRADE)
-        throw GradeTooHighException(this->_name + ", bureaucrat already in Hight Grade: " + std::to_string(_grade));
+        throw GradeTooHighException();
     this->_grade--;
 }
 
 void Bureaucrat::decrementGade()
 {
     if (this->_grade == LOW_GRADE)
-        throw GradeTooLowException(this->_name + ", bureaucrat already in lower Grade: " + std::to_string(_grade));
+        throw GradeTooLowException();
     this->_grade++;
 }
 
@@ -88,15 +88,14 @@ void Bureaucrat::signForm(Form &form)
 }
 
 
-Bureaucrat::GradeTooHighException::GradeTooHighException(std::string const &errorMessage) : _errorMessage(errorMessage)
+Bureaucrat::GradeTooHighException::GradeTooHighException()
 {
     //std::cout << "GradeTooHighException constructor called " << std::endl;
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-    std::string error = std::string("ERROR : ") + _errorMessage;
-    return (error.c_str());
+    return ("bureaucrat Grade too High, the range between 1-150.");
 }
 
 Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
@@ -104,15 +103,14 @@ Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
     //std::cout << "GradeTooHighException destructor called " << std::endl;
 }
 
-Bureaucrat::GradeTooLowException::GradeTooLowException(std::string const &errorMessage) : _errorMessage(errorMessage)
+Bureaucrat::GradeTooLowException::GradeTooLowException()
 {
     //std::cout << "GradeTooLowException constructor called " << std::endl;
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-    std::string error = std::string("ERROR : ") + _errorMessage;
-    return (error.c_str());
+    return ("bureaucrat Grade is too low, the range between 1-150.");
 }
 
 Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()

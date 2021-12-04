@@ -30,29 +30,23 @@ public:
     void signForm(Form &form);
 
     ///
-    void executeForm(Form const & form);
+    void executeForm(Form const &form);
     ///
 
     class GradeTooHighException : public std::exception
     {
-    private:
-        std::string _errorMessage;
-
     public:
-        GradeTooHighException(std::string const &errorMessage);
-        ~GradeTooHighException() throw ();
+        GradeTooHighException();
+        ~GradeTooHighException() throw();
 
         const char *what() const throw();
     };
 
     class GradeTooLowException : public std::exception
     {
-    private:
-        std::string _errorMessage;
-
     public:
-        GradeTooLowException(std::string const &errorMessage);
-        ~GradeTooLowException() throw ();
+        GradeTooLowException();
+        ~GradeTooLowException() throw();
 
         const char *what() const throw();
     };
