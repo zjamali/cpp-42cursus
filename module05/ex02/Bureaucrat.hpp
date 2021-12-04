@@ -35,11 +35,9 @@ public:
 
     class GradeTooHighException : public std::exception
     {
-    private:
-        std::string _errorMessage;
 
     public:
-        GradeTooHighException(std::string const &errorMessage);
+        GradeTooHighException();
         ~GradeTooHighException() throw ();
 
         const char *what() const throw();
@@ -47,11 +45,8 @@ public:
 
     class GradeTooLowException : public std::exception
     {
-    private:
-        std::string _errorMessage;
-
     public:
-        GradeTooLowException(std::string const &errorMessage);
+        GradeTooLowException();
         ~GradeTooLowException() throw ();
 
         const char *what() const throw();

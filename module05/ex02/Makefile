@@ -1,4 +1,4 @@
-NAME = form
+NAME = forms
 CFLAGS = -Wall -Werror -Wextra
 CC = clang++
 
