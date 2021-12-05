@@ -1,17 +1,12 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm()
-    : Form("RobotomyRequestForm", RB_SIGN, RB_EXEC), _target("no target")
-{
-}
-
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target)
     : Form("RobotomyRequestForm", RB_SIGN, RB_EXEC) , _target(target)
 {
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &obj)
-    :Form("RobotomyRequestForm", RB_SIGN, RB_EXEC), _target(obj._target)
+    :Form(obj), _target(obj._target)
 {
 }
 

@@ -16,7 +16,7 @@ $(NAME): $(OBJ_NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	rm -f *.o
+	rm -f $(OBJ_NAME)
 fclean: clean 
 	rm -rf $(NAME)
 re: fclean all

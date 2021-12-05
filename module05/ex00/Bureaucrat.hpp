@@ -11,10 +11,10 @@ class Bureaucrat
 private:
     const std::string _name;
     unsigned int _grade;
-    Bureaucrat &operator=(Bureaucrat const &obj);
     Bureaucrat();
 
 public:
+    Bureaucrat &operator=(Bureaucrat const &obj);
     Bureaucrat(std::string const &name, unsigned int const &grade);
     Bureaucrat(Bureaucrat const &obj);
     ~Bureaucrat();
@@ -29,7 +29,7 @@ public:
 
     public:
         GradeTooHighException();
-        ~GradeTooHighException() throw ();
+        ~GradeTooHighException() throw();
 
         const char *what() const throw();
     };

@@ -1,17 +1,12 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm()
-    : Form("ShrubberyCreationForm", SH_SIGN, SH_EXEC), _target("no target")
-{
-}
-
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target)
     : Form("ShrubberyCreationForm", SH_SIGN, SH_EXEC), _target(target)
 {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &obj)
-    : Form("ShrubberyCreationForm", SH_SIGN, SH_EXEC), _target(obj._target)
+    : Form(obj), _target(obj._target)
 {
 }
 

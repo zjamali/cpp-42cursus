@@ -1,9 +1,8 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
-#include "Form.hpp"
 #include <iostream>
 #include <exception>
-
+#include "Form.hpp"
 #define HIGH_GRADE 1
 #define LOW_GRADE 150
 
@@ -14,10 +13,10 @@ class Bureaucrat
 private:
     const std::string _name;
     unsigned int _grade;
-    Bureaucrat &operator=(Bureaucrat const &obj);
+    Bureaucrat();
 
 public:
-    Bureaucrat();
+    Bureaucrat &operator=(Bureaucrat const &obj);
     Bureaucrat(std::string const &name, unsigned int const &grade);
     Bureaucrat(Bureaucrat const &obj);
     ~Bureaucrat();
@@ -27,13 +26,16 @@ public:
     void incrementGrade();
     void decrementGade();
 
+    ///
     void signForm(Form &form);
+    ///
 
     class GradeTooHighException : public std::exception
     {
+
     public:
         GradeTooHighException();
-        ~GradeTooHighException() throw ();
+        ~GradeTooHighException() throw();
 
         const char *what() const throw();
     };
@@ -42,7 +44,7 @@ public:
     {
     public:
         GradeTooLowException();
-        ~GradeTooLowException() throw ();
+        ~GradeTooLowException() throw();
 
         const char *what() const throw();
     };

@@ -11,6 +11,7 @@ private:
     std::string const _target;
     RobotomyRequestForm();
     RobotomyRequestForm &operator=(RobotomyRequestForm const &obj);
+
 public:
     RobotomyRequestForm(std::string const &target);
     RobotomyRequestForm(RobotomyRequestForm const &obj);

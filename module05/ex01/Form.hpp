@@ -13,9 +13,9 @@ private:
     const unsigned int _signGrade;
     const unsigned int _executeGrade;
     Form &operator=(Form const &obj);
+    Form();
 
 public:
-    Form();
     Form(std::string const &name, unsigned int const &_signGrade, unsigned int const &executeGrade);
     Form(Form const &obj);
     ~Form();
@@ -23,7 +23,7 @@ public:
     std::string const &getName() const;
     unsigned int const &getSignGrade() const;
     unsigned int const &getExecuteGrade() const;
-    bool const &getIsSigned() const;
+    bool const &isSigned() const;
 
 
     void beSigned(Bureaucrat const &bureaucrat);

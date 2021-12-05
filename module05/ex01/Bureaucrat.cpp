@@ -43,6 +43,7 @@ void Bureaucrat::incrementGrade()
 {
     if (this->_grade == HIGH_GRADE)
         throw GradeTooHighException();
+    std::cout << "Bureaucrat " << _name << " is incremented" << std::endl;
     this->_grade--;
 }
 
@@ -50,9 +51,12 @@ void Bureaucrat::decrementGade()
 {
     if (this->_grade == LOW_GRADE)
         throw GradeTooLowException();
+    std::cout << "Bureaucrat " << _name << " is decremented" << std::endl;
+
     this->_grade++;
 }
 
+///
 void Bureaucrat::signForm(Form &form)
 {
     try
@@ -66,7 +70,7 @@ void Bureaucrat::signForm(Form &form)
         throw;
     }
 }
-
+///
 
 Bureaucrat::GradeTooHighException::GradeTooHighException()
 {
@@ -96,6 +100,12 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
 {
     //std::cout << "GradeTooLowException destructor called " << std::endl;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj)
+{
+    this->_grade = obj.getGrade();
+    return (*this);
 }
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &obj)
