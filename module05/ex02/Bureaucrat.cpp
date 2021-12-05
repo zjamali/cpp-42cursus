@@ -3,7 +3,7 @@
 Bureaucrat::Bureaucrat(std::string const &name, unsigned int const &grade) : _name(name)
 {
     //std::cout << "Bureaucrat parametre  constructor called " << std::endl;
-    try
+        try
     {
         if (grade < HIGH_GRADE)
             throw GradeTooHighException();
