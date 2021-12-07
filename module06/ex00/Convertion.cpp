@@ -2,6 +2,7 @@
 
 Convertion::Convertion(std::string const &arg) : _arg(arg)
 {
+    this->parseArg();
 }
 
 Convertion::~Convertion()
@@ -16,7 +17,7 @@ void Convertion::parseArg()
     }
     else
     {
-    this->cast();
+        this->cast();
     }
 }
 
