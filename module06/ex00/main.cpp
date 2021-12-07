@@ -5,8 +5,6 @@ int main(int argc, char const *argv[])
     {
         Convertion num(argv[1]);
         num.parseArg();
-        num.cast();
-        num.printAll();
     }
     return 0;
 }

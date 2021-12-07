@@ -2,6 +2,7 @@
 #define CONVERTION_HPP
 #include <iostream>
 #include <limits>
+#include <iomanip>
 
 #define NON_DISPLAYABLE "Non displayable"
 #define NAN "nan"
@@ -23,11 +24,15 @@ private:
     bool argIsDouble();
     bool argIsChar();
 
-    void cast_from_char();
-    void cast_from_int();
-    void cast_from_float();
-    void cast_from_double();
+    void castFromChar();
+    void castFromInt();
+    void castFromFloat();
+    void castFromDouble();
 
+    void printChar() const ;
+    void printInt() const ;
+    void printFloat() const ;
+    void printDouble() const ;
 public:
     Convertion(std::string const &arg);
     ~Convertion();
