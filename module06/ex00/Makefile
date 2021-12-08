@@ -1,6 +1,6 @@
-NAME = convertion
+NAME = convert
 CFLAGS = -Wall -Werror -Wextra
-CC = clang++
+CC = c++
 
 SRC_NAME = Convertion.cpp main.cpp
 

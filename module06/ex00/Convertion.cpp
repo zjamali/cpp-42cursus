@@ -12,36 +12,9 @@ Convertion::~Convertion()
 void Convertion::parseArg()
 {
     if (!this->argIsInt() && !this->argIsChar() && !this->argIsFloat() && !this->argIsDouble())
-    {
         std::cout << "argument type unkown" << std::endl;
-    }
     else
-    {
         this->cast();
-    }
-}
-
-int Convertion::getInt() const
-{
-    return (_int);
-}
-
-float Convertion::getFloat() const
-{
-    return (_float);
-}
-double Convertion::getDouble() const
-{
-    return (_double);
-}
-char Convertion::getChar() const
-{
-    return (_char);
-}
-
-std::string Convertion::getType() const
-{
-    return (_type);
 }
 
 bool Convertion::argIsInt()
@@ -65,7 +38,8 @@ bool Convertion::argIsFloat()
     char *end_ptr;
     double num = std::strtod(_arg.c_str(), &end_ptr);
 
-    if ((*end_ptr == 'f' && *(++end_ptr) == '\0' && (_arg.find('.')) != std::string::npos) || _arg == "nanf")
+    if ((*end_ptr == 'f' && *(++end_ptr) == '\0' && (_arg.find('.')) != std::string::npos) 
+    || _arg == "nanf" || _arg == "+nanf" || _arg == "-nanf" || _arg == "inff" || _arg == "+inff" || _arg == "-inff")
     {
         this->_type = "float";
         this->_float = static_cast<float>(num);
@@ -77,7 +51,8 @@ bool Convertion::argIsDouble()
 {
     char *end_ptr;
     double num = std::strtod(_arg.c_str(), &end_ptr);
-    if ((*end_ptr != '\0' || (_arg.find('.')) == std::string::npos) && _arg != "nan")
+    if ((*end_ptr != '\0' || (_arg.find('.')) == std::string::npos) 
+    && _arg != "nan" && _arg != "+nan" && _arg != "-nan" && _arg != "inf" && _arg != "+inf" && _arg != "-inf")
         return (false);
     this->_type = "double";
     this->_double = static_cast<double>(num);
@@ -103,9 +78,7 @@ void Convertion::cast()
     else if (this->_type == "double")
         castFromDouble();
     else
-    {
         return;
-    }
     this->printAll();
 }
 
@@ -145,40 +118,31 @@ void Convertion::printAll() const
 
 void Convertion::printChar() const
 {
-    if (_arg == "nan" || _arg == "nanf" || std::strtol(_arg.c_str(), nullptr, 10) > 256)
-    {
+    if (_arg == "nan" || _arg == "+nan" || _arg == "-nan" || _arg == "nanf" || _arg == "-nanf" || _arg == "+nanf" || _arg == "inf" || _arg == "-inf" || _arg == "+inf"
+    || std::strtol(_arg.c_str(), nullptr, 10) > 256)
         std::cout << "char: impossible" << std::endl;
-    }
     else if ( _char > 127 || _char < 30)
-    {
         std::cout << "char: Non displayable" << std::endl;
-    }
     else
-    {
         std::cout << "char: '" << _char << "'" << std::endl;
-    }
 }
 
 void Convertion::printInt() const
 {
-    if ((_arg == "nan" || _arg == "nanf") ||
+    if (_arg == "nan" || _arg == "+nan" || _arg == "-nan" || _arg == "nanf" || _arg == "-nanf" || _arg == "+nanf" || _arg == "inf" || _arg == "-inf" || _arg == "+inf" || _arg == "+inff" || _arg == "-inff" || _arg == "inff" ||
         std::strtol(_arg.c_str(), nullptr, 10) > std::numeric_limits<int>::max()||
         std::strtol(_arg.c_str(), nullptr, 10) < std::numeric_limits<int>::min())
-    {
         std::cout << "int: impossible" << std::endl;
-    }
     else
-    {
         std::cout << "int: " << _int << std::endl;
-    }
 }
 
 void Convertion::printFloat() const
 {
-    std::cout << "float: " << std::fixed << std::setprecision(1) << this->getFloat() << "f" << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) << _float << "f" << std::endl;
 }
 
 void Convertion::printDouble() const
 {
-    std::cout << "double: " << std::fixed << std::setprecision(1) << this->getDouble() << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << _double << std::endl;
 }

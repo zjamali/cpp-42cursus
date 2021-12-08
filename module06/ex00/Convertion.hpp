@@ -4,11 +4,6 @@
 #include <limits>
 #include <iomanip>
 
-#define NON_DISPLAYABLE "Non displayable"
-#define NAN "nan"
-#define NANF "nanf"
-#define IMPOSSIBLE "impossible"
-
 class Convertion
 {
 private:
@@ -33,20 +28,15 @@ private:
     void printInt() const ;
     void printFloat() const ;
     void printDouble() const ;
+    void cast();
+    void parseArg();
+    void printAll() const;
+
 public:
     Convertion(std::string const &arg);
     ~Convertion();
 
-    void parseArg();
-    void cast();
-    void printAll() const;
 
-    std::string getType() const;
-
-    int getInt() const;
-    float getFloat() const;
-    double getDouble() const;
-    char getChar() const;
 };
 
 #endif
