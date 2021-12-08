@@ -62,6 +62,7 @@ void identify(Base* p)
     if (Aptr != nullptr)
     {
         std::cout << "A" << std::endl;
+         return ;
     } 
 
     B *Bptr = dynamic_cast<B*>(p);
@@ -69,12 +70,14 @@ void identify(Base* p)
     if (Bptr != nullptr)
     {
         std::cout << "B" << std::endl;
+         return ;
     } 
     C *Cptr = dynamic_cast<C*>(p);
 
     if (Cptr != nullptr)
     {
         std::cout << "C" << std::endl;
+         return ;
     } 
 }
 
@@ -85,6 +88,7 @@ void identify(Base& p)
         A &Aref = dynamic_cast<A&>(p);
         (void)Aref;
         std::cout << "A" << std::endl;
+        return ;
     }
     catch(const std::exception& e)
     {
@@ -95,6 +99,7 @@ void identify(Base& p)
         B &Bref = dynamic_cast<B&>(p);
         (void)Bref;
         std::cout << "B" << std::endl;
+         return ;
     }
     catch(const std::exception& e)
     {
@@ -105,6 +110,7 @@ void identify(Base& p)
         C &Cref = dynamic_cast<C&>(p);
         (void)Cref;
         std::cout << "C" << std::endl;
+         return ;
     }
     catch(const std::exception& e)
     {
