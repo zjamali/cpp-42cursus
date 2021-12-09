@@ -7,12 +7,13 @@
 class Convertion
 {
 private:
-    std::string const _arg;
+    std::string _arg;
     std::string _type;
     char _char;
     int _int;
     float _float;
     double _double;
+    bool _print_int;
 
     bool argIsInt();
     bool argIsFloat();
@@ -31,9 +32,12 @@ private:
     void cast();
     void parseArg();
     void printAll() const;
+    Convertion();
 
 public:
     Convertion(std::string const &arg);
+    Convertion(Convertion const &obj);
+    Convertion &operator=(Convertion const &obj);
     ~Convertion();
 
 

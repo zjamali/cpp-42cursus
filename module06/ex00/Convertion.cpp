@@ -1,6 +1,6 @@
 #include "Convertion.hpp"
 
-Convertion::Convertion(std::string const &arg) : _arg(arg)
+Convertion::Convertion(std::string const &arg) : _arg(arg), _print_int(true)
 {
     this->parseArg();
 }
@@ -9,62 +9,103 @@ Convertion::~Convertion()
 {
 }
 
+Convertion::Convertion(Convertion const &obj)
+{
+    *this = obj;
+}
+Convertion &Convertion::operator=(Convertion const &obj)
+{
+    if (this != &obj)
+    {
+        this->_arg = obj._arg;
+        this->_type = obj._type;
+        this->_char = obj._char;
+        this->_int = obj._int;
+        this->_float = obj._float;
+        this->_double = obj._double;
+        this->_print_int = obj._print_int;
+    }
+    return (*this);
+}
+
 void Convertion::parseArg()
 {
     if (!this->argIsInt() && !this->argIsChar() && !this->argIsFloat() && !this->argIsDouble())
+    {
         std::cout << "argument type unkown" << std::endl;
-    else
-        this->cast();
-}
-
-bool Convertion::argIsInt()
-{
-    char *end_ptr;
-    long num = std::strtol(_arg.c_str(), &end_ptr, 10);
-
-    if (*end_ptr == '\0' && (_arg.find('.')) == std::string::npos)
-    {
-        if (num < std::numeric_limits<int>::min() || num > std::numeric_limits<int>::max())
-            return (false);
-        this->_type = "int";
-        this->_int = static_cast<int>(num);
-        return (true);
+        return;
     }
-    return (false);
+
+    this->cast();
 }
 
-bool Convertion::argIsFloat()
-{
-    char *end_ptr;
-    double num = std::strtod(_arg.c_str(), &end_ptr);
-
-    if ((*end_ptr == 'f' && *(++end_ptr) == '\0' && (_arg.find('.')) != std::string::npos) 
-    || _arg == "nanf" || _arg == "+nanf" || _arg == "-nanf" || _arg == "inff" || _arg == "+inff" || _arg == "-inff")
-    {
-        this->_type = "float";
-        this->_float = static_cast<float>(num);
-        return (true);
-    }
-    return (false);
-}
-bool Convertion::argIsDouble()
-{
-    char *end_ptr;
-    double num = std::strtod(_arg.c_str(), &end_ptr);
-    if ((*end_ptr != '\0' || (_arg.find('.')) == std::string::npos) 
-    && _arg != "nan" && _arg != "+nan" && _arg != "-nan" && _arg != "inf" && _arg != "+inf" && _arg != "-inf")
-        return (false);
-    this->_type = "double";
-    this->_double = static_cast<double>(num);
-    return (true);
-}
 bool Convertion::argIsChar()
 {
     if (_arg.length() != 1)
         return (false);
     this->_type = "char";
-    this->_char = static_cast<char>(_arg[0]);
+    this->_char = _arg[0];
+    this->_print_int = true;
     return (true);
+}
+
+bool Convertion::argIsInt()
+{
+    size_t end_indx;
+    try
+    {
+        this->_int = stoi(_arg, &end_indx);
+        if (end_indx != this->_arg.length())
+            return (false);
+        this->_type = "int";
+        return (true);
+    }
+    catch (const std::exception &e)
+    {
+        _print_int = false;
+        return (false);
+    }
+}
+
+bool Convertion::argIsFloat()
+{
+    size_t end_indx;
+
+    try
+    {
+        this->_float = stof(_arg, &end_indx);
+        if (this->_arg != "-inff" && this->_arg != "+inff" && this->_arg != "nanf")
+        {
+            if (end_indx != this->_arg.length() - 1 || _arg.find('.') == std::string::npos || _arg.c_str()[end_indx] != 'f')
+                return (false);
+        }
+        this->_type = "float";
+        return (true);
+    }
+    catch (const std::exception &e)
+    {
+        return (false);
+    }
+}
+
+bool Convertion::argIsDouble()
+{
+    size_t end_indx;
+    try
+    {
+        this->_double = stod(_arg, &end_indx);
+        if (this->_arg != "-inf" && this->_arg != "+inf" && this->_arg != "nan")
+        {
+            if (end_indx != this->_arg.length() || ((_arg.find('.')) == std::string::npos) || _arg.c_str()[end_indx] != '\0')
+                return (false);
+        }
+        this->_type = "double";
+        return (true);
+    }
+    catch (const std::exception &e)
+    {
+        return (false);
+    }
 }
 
 void Convertion::cast()
@@ -96,14 +137,20 @@ void Convertion::castFromInt()
 }
 void Convertion::castFromFloat()
 {
-    this->_char = static_cast<char>(this->_float);
-    this->_int = static_cast<int>(this->_float);
+    if (_print_int)
+    {
+        this->_char = static_cast<char>(this->_float);
+        this->_int = static_cast<int>(this->_float);
+    }
     this->_double = static_cast<double>(this->_float);
 }
 void Convertion::castFromDouble()
 {
-    this->_char = static_cast<char>(this->_double);
-    this->_int = static_cast<int>(this->_double);
+    if (_print_int)
+    {
+        this->_char = static_cast<char>(this->_double);
+        this->_int = static_cast<int>(this->_double);
+    }
     this->_float = static_cast<float>(this->_double);
 }
 
@@ -115,13 +162,11 @@ void Convertion::printAll() const
     printDouble();
 }
 
-
 void Convertion::printChar() const
 {
-    if (_arg == "nan" || _arg == "+nan" || _arg == "-nan" || _arg == "nanf" || _arg == "-nanf" || _arg == "+nanf" || _arg == "inf" || _arg == "-inf" || _arg == "+inf"
-    || std::strtol(_arg.c_str(), nullptr, 10) > 256)
+    if (!_print_int || this->_int < -128 || this->_int > 127)
         std::cout << "char: impossible" << std::endl;
-    else if ( _char > 127 || _char < 30)
+    else if (this->_int > 127 || this->_int < 30)
         std::cout << "char: Non displayable" << std::endl;
     else
         std::cout << "char: '" << _char << "'" << std::endl;
@@ -129,9 +174,11 @@ void Convertion::printChar() const
 
 void Convertion::printInt() const
 {
-    if (_arg == "nan" || _arg == "+nan" || _arg == "-nan" || _arg == "nanf" || _arg == "-nanf" || _arg == "+nanf" || _arg == "inf" || _arg == "-inf" || _arg == "+inf" || _arg == "+inff" || _arg == "-inff" || _arg == "inff" ||
-        std::strtol(_arg.c_str(), nullptr, 10) > std::numeric_limits<int>::max()||
-        std::strtol(_arg.c_str(), nullptr, 10) < std::numeric_limits<int>::min())
+
+    /*if (_arg == "nan" || _arg == "+nan" || _arg == "-nan" || _arg == "nanf" || _arg == "-nanf" || _arg == "+nanf" || _arg == "inf" || _arg == "-inf" || _arg == "+inf" || _arg == "+inff" || _arg == "-inff" || _arg == "inff" ||
+        std::strtol(_arg.c_str(), nullptr, 10) > std::numeric_limits<int>::max() ||
+        std::strtol(_arg.c_str(), nullptr, 10) < std::numeric_limits<int>::min())*/
+    if (!_print_int)
         std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << _int << std::endl;
