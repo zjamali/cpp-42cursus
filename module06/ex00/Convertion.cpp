@@ -2,7 +2,7 @@
 
 Convertion::Convertion(std::string const &arg) : _arg(arg), _print_int(true)
 {
-    this->parseArg();
+    this->getType();
 }
 
 Convertion::~Convertion()
@@ -13,6 +13,7 @@ Convertion::Convertion(Convertion const &obj)
 {
     *this = obj;
 }
+
 Convertion &Convertion::operator=(Convertion const &obj)
 {
     if (this != &obj)
@@ -28,15 +29,15 @@ Convertion &Convertion::operator=(Convertion const &obj)
     return (*this);
 }
 
-void Convertion::parseArg()
+void Convertion::getType()
 {
     if (!this->argIsInt() && !this->argIsChar() && !this->argIsFloat() && !this->argIsDouble())
     {
         std::cout << "argument type unkown" << std::endl;
         return;
     }
-
     this->cast();
+    this->printAll();
 }
 
 bool Convertion::argIsChar()
@@ -118,9 +119,6 @@ void Convertion::cast()
         castFromFloat();
     else if (this->_type == "double")
         castFromDouble();
-    else
-        return;
-    this->printAll();
 }
 
 void Convertion::castFromChar()
@@ -129,12 +127,14 @@ void Convertion::castFromChar()
     this->_float = static_cast<float>(this->_char);
     this->_double = static_cast<double>(this->_char);
 }
+
 void Convertion::castFromInt()
 {
     this->_char = static_cast<char>(this->_int);
     this->_float = static_cast<float>(this->_int);
     this->_double = static_cast<double>(this->_int);
 }
+
 void Convertion::castFromFloat()
 {
     if (_print_int)
@@ -144,6 +144,7 @@ void Convertion::castFromFloat()
     }
     this->_double = static_cast<double>(this->_float);
 }
+
 void Convertion::castFromDouble()
 {
     if (_print_int)
@@ -166,7 +167,7 @@ void Convertion::printChar() const
 {
     if (!_print_int || this->_int < -128 || this->_int > 127)
         std::cout << "char: impossible" << std::endl;
-    else if (this->_int > 127 || this->_int < 30)
+    else if (this->_int > 126 || this->_int < 32)
         std::cout << "char: Non displayable" << std::endl;
     else
         std::cout << "char: '" << _char << "'" << std::endl;
@@ -174,10 +175,6 @@ void Convertion::printChar() const
 
 void Convertion::printInt() const
 {
-
-    /*if (_arg == "nan" || _arg == "+nan" || _arg == "-nan" || _arg == "nanf" || _arg == "-nanf" || _arg == "+nanf" || _arg == "inf" || _arg == "-inf" || _arg == "+inf" || _arg == "+inff" || _arg == "-inff" || _arg == "inff" ||
-        std::strtol(_arg.c_str(), nullptr, 10) > std::numeric_limits<int>::max() ||
-        std::strtol(_arg.c_str(), nullptr, 10) < std::numeric_limits<int>::min())*/
     if (!_print_int)
         std::cout << "int: impossible" << std::endl;
     else
@@ -193,3 +190,10 @@ void Convertion::printDouble() const
 {
     std::cout << "double: " << std::fixed << std::setprecision(1) << _double << std::endl;
 }
+
+
+
+
+
+
+

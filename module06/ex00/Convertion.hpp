@@ -15,23 +15,24 @@ private:
     double _double;
     bool _print_int;
 
+    void getType();
     bool argIsInt();
     bool argIsFloat();
     bool argIsDouble();
     bool argIsChar();
-
+    
+    void cast();
     void castFromChar();
     void castFromInt();
     void castFromFloat();
     void castFromDouble();
 
+    void printAll() const;
     void printChar() const ;
     void printInt() const ;
     void printFloat() const ;
     void printDouble() const ;
-    void cast();
-    void parseArg();
-    void printAll() const;
+
     Convertion();
 
 public:
@@ -39,8 +40,6 @@ public:
     Convertion(Convertion const &obj);
     Convertion &operator=(Convertion const &obj);
     ~Convertion();
-
-
 };
 
 #endif
