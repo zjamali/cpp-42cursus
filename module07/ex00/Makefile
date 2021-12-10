@@ -5,7 +5,7 @@ CC = c++
 SRC_NAME = main.cpp
 
 OBJ_NAME = $(SRC_NAME:%.cpp=%.o)
-HEADER = template.hpp
+HEADER = whatever.hpp
 
 all: $(NAME)
 
