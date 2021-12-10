@@ -1,7 +1,7 @@
-#ifndef TEMPLATE_HPP
-#define TEMPLATE_HPP
-template <typename T>
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
+template <typename T>
 void swap(T &x, T &y)
 {
     T temp = x;
@@ -20,5 +20,6 @@ T max(T x, T y)
 {
     return (x <= y ? y : x);
 }
+
 
 #endif
