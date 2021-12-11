@@ -11,7 +11,7 @@ private:
     T *_array;
 
 public:
-    Array() : _size(0), _array(nullptr) {}
+    Array() : _size(0), _array(NULL) {}
 
     Array(unsigned int n) : _size(n)
     {
@@ -19,7 +19,7 @@ public:
         memset(_array, 0, sizeof(T) * _size);
     }
 
-    Array(Array const &obj)
+    Array(Array const &obj): _array(NULL)
     {
         *this = obj;
     }
