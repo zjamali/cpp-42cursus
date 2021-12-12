@@ -2,24 +2,24 @@
 #define SPAN_HPP
 #include <iostream>
 #include <exception>
-#include <vector>
-#include <algorithm>
+#include <set>
+
 class Span
 {
 private:
     unsigned int _N;
     unsigned int _counter;
-    std::vector<int> _vect;
+    std::multiset<int , std::greater<int> > _set;
     Span();
-    
+
 public:
     Span(unsigned int N);
     Span(Span const &obj);
     Span &operator=(Span const &obj);
 
     void addNumber(int number);
-    int  shortestSpan() const;
-    int  longestSpan() const;
+    unsigned int shortestSpan() const;
+    unsigned int longestSpan() const;
     ~Span();
 };
 
