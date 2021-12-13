@@ -1,5 +1,6 @@
 #include "span.hpp"
 #include <iostream>
+#include <vector>
 
 int main()
 {
@@ -21,7 +22,21 @@ int main()
         //std::cout << num << " , " ;
         sp1.addNumber(num);
     }
-
     std::cout << sp1.shortestSpan() << std::endl;
     std::cout << sp1.longestSpan() << std::endl;
+
+
+    n = 20;
+    std::vector<int> vet;
+    Span sp2 = Span(n);
+    for (int i = 0; i < n; i++)
+    {
+        int num = rand() % n;
+        //std::cout << num << " , " ;
+        vet.push_back(num);
+    }
+    std::cout << std::endl;
+    sp2.addNumber(vet.begin(),vet.end());
+    std::cout << sp2.shortestSpan() << std::endl;
+    std::cout << sp2.longestSpan() << std::endl;
 }

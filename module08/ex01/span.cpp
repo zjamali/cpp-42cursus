@@ -43,11 +43,12 @@ unsigned int Span::shortestSpan() const
 {
     if (_N < 2)
         throw std::runtime_error("Can't find shortestSpan");
-    
+
     std::multiset<int>::iterator it = _set.begin();
+    std::multiset<int>::iterator end = --_set.end();
     unsigned int shortest = *(it++) - *(it);
     unsigned int sub = 0;
-    while (it != (--_set.end()))
+    while (it != end)
     {
         if (shortest > (sub = (*(it++) - *(it))))
         {
@@ -57,10 +58,10 @@ unsigned int Span::shortestSpan() const
     return (shortest);
 }
 
-unsigned int  Span::longestSpan() const
+unsigned int Span::longestSpan() const
 {
-    if (_N <= 1)
+    if (_N < 2)
         throw std::runtime_error("Can't find longestSpan");
 
-    return (*(_set.begin())  -  *(--(_set.end())));
+    return (*(_set.begin()) - *(--(_set.end())));
 }

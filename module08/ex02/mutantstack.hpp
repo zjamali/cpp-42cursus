@@ -9,8 +9,13 @@ class MutantStack : public std::stack<T, Container>
 {
 
 public:
-    MutantStack(){};
-    ~MutantStack(){};
+    MutantStack(){}
+    MutantStack(MutantStack const &obj){*this = obj;}
+    MutantStack &operator=(MutantStack const &obj)
+    {
+        *(dynamic_cast< std::stack<T, Container> * >(this)) = obj;
+    }
+    ~MutantStack(){}
 
 public:
     typedef typename Container::iterator iter_type;
@@ -21,13 +26,9 @@ public:
     private:
         iter_type _iter;
         iterator(){};
-
     public:
         iterator(iter_type const &iter) : _iter(iter) {}
-        iterator(iterator const &obj)
-        {
-            *this = obj;
-        }
+        iterator(iterator const &obj) {*this = obj;}
         iterator &operator=(iterator const &obj)
         {
             if (this != &obj)
@@ -52,15 +53,15 @@ public:
 
         iterator &operator++(int)
         {
-            iter_type tmp = *this;
-            this --;
+            iterator tmp = *this;
+            this->_iter++;
             return (tmp);
         }
 
         iterator &operator--(int)
         {
-            iter_type *tmp = this;
-            this --;
+            iterator tmp = *this;
+            this->_iter--;
             return (tmp);
         }
 
