@@ -12,80 +12,81 @@ public:
     MutantStack(){};
     ~MutantStack(){};
 
-private:
+public:
     typedef typename Container::iterator iter_type;
 
 public:
     class iterator
     {
-        private:
-            iter_type _iter;
-            iterator() {};
-        public:
-            iterator(iter_type const &iter) : _iter(iter) {}
-            iterator(iterator const &obj) 
-            {
-               *this = obj;
-            }
-            iterator &operator=(iterator const &obj)
-            {
-                if (this != &obj)
-                {
-                    this->_iter = obj._iter;
-                }
-                return (*this);
-            }
-            ~iterator() {}
+    private:
+        iter_type _iter;
+        iterator(){};
 
-        public:
-            iterator &operator++()
+    public:
+        iterator(iter_type const &iter) : _iter(iter) {}
+        iterator(iterator const &obj)
+        {
+            *this = obj;
+        }
+        iterator &operator=(iterator const &obj)
+        {
+            if (this != &obj)
             {
-                this->_iter++;
-                return (*this);
+                this->_iter = obj._iter;
             }
-            iterator &operator--()
-            {
-                this->_iter--;
-                return (*this);
-            }
+            return (*this);
+        }
+        ~iterator() {}
 
-            iterator &operator++(int)
-            {
-                iter_type tmp = *this;
-                this->_iter++;
-                return (tmp);
-            }
+    public:
+        iterator &operator++()
+        {
+            this->_iter++;
+            return (*this);
+        }
+        iterator &operator--()
+        {
+            this->_iter--;
+            return (*this);
+        }
 
-            iterator &operator--(int)
-            {
-                iter_type *tmp = this;
-                this->_iter--;
-                return (tmp);
-            }
+        iterator &operator++(int)
+        {
+            iter_type tmp = *this;
+            this --;
+            return (tmp);
+        }
 
-            iterator &operator*()
-            {
-                return (*(this->_iter));
-            }
+        iterator &operator--(int)
+        {
+            iter_type *tmp = this;
+            this --;
+            return (tmp);
+        }
 
-            bool operator==(const iterator &obj) const
-            {
-                return (this->_iter == obj._iter);
-            }
+        T &operator*()
+        {
+            return (*this->_iter);
+        }
 
-            bool operator !=(const iterator &obj) const
-            {
-                return (this->_iter != obj._iter);
-            }
+        bool operator==(const iterator &obj) const
+        {
+            return (this->_iter == obj._iter);
+        }
+
+        bool operator!=(const iterator &obj) const
+        {
+            return (this->_iter != obj._iter);
+        }
     };
     iterator begin()
     {
-        return (MutantStack<T,Container>::iterator(this->c.begin()));
+        return (MutantStack<T, Container>::iterator(this->c.begin()));
     }
     iterator end()
     {
-        return (MutantStack<T,Container>::iterator(this->c.end()));
+        return (MutantStack<T, Container>::iterator(this->c.end()));
     }
-    
 };
+
 #endif
