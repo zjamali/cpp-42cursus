@@ -12,4 +12,16 @@ int main()
 
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
+
+    int n = 20000;
+    Span sp1 = Span(n);
+    for (int i = 0; i < n; i++)
+    {
+        int num = rand() % n;
+        //std::cout << num << " , " ;
+        sp1.addNumber(num);
+    }
+
+    std::cout << sp1.shortestSpan() << std::endl;
+    std::cout << sp1.longestSpan() << std::endl;
 }
